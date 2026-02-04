@@ -1,9 +1,11 @@
 function openEnvelope() {
     const envelope = document.querySelector('.envelope');
+    const envelopeRect = envelope.getBoundingClientRect();
     envelope.classList.add('open');
 
+    // Hearts originate from envelope position
     for (let i = 0; i < 35; i++) {
-        createHeart();
+        createHeart(envelopeRect);
     }
 
     setTimeout(() => {
@@ -14,23 +16,23 @@ function openEnvelope() {
     }, 1300);
 }
 
-function createHeart() {
+function createHeart(rect) {
     const heart = document.createElement('div');
     heart.className = 'heart';
     heart.innerHTML = '❤';
-    heart.style.left = Math.random() * window.innerWidth + 'px';
-    heart.style.bottom = '0px';
-    heart.style.fontSize = (5 + Math.random() * 8) + 'vw'; // responsive
+    // Position relative to envelope
+    heart.style.left = rect.left + rect.width/2 + (Math.random()*80-40) + 'px';
+    heart.style.top = rect.top + 'px';
+    heart.style.fontSize = (5 + Math.random() * 8) + 'vw';
     document.body.appendChild(heart);
 
-    setTimeout(() => heart.remove(), 2000);
+    setTimeout(() => heart.remove(), 3000);
 }
 
 function typeText(text) {
-    const typingDiv = document.getElementById("typing");
-    typingDiv.innerHTML = "";
     let i = 0;
     const speed = 50;
+    const typingDiv = document.getElementById("typing");
 
     function typing() {
         if (i < text.length) {
@@ -41,12 +43,3 @@ function typeText(text) {
     }
     typing();
 }
-
-// Example: split message if too long
-const message = "HAPPY VALENTINE'S DAY, MAMI! I LOVE YOU!";
-const maxCharsPerLine = 25;
-const formattedMessage = message.match(new RegExp('.{1,' + maxCharsPerLine + '}', 'g')).join('\n');
-typeText(formattedMessage);
-
-}
-
