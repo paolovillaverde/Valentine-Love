@@ -20,7 +20,7 @@ function createHeart() {
     heart.innerHTML = '❤';
     heart.style.left = Math.random() * window.innerWidth + 'px';
     heart.style.bottom = '0px';
-    heart.style.fontSize = (20 + Math.random() * 40) + 'px';
+    heart.style.fontSize = (5 + Math.random() * 8) + 'vw'; // responsive
     document.body.appendChild(heart);
 
     setTimeout(() => heart.remove(), 2000);
@@ -28,7 +28,7 @@ function createHeart() {
 
 function typeText(text) {
     let i = 0;
-    const speed = 70;
+    const speed = 50; // faster typing for mobile
     const typingDiv = document.getElementById("typing");
 
     function typing() {
