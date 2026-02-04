@@ -1,5 +1,7 @@
+/* BASE STYLES */
 body {
     margin: 0;
+    padding: 0;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -7,7 +9,8 @@ body {
     font-family: Arial, sans-serif;
     overflow: hidden;
     position: relative;
-    -webkit-user-select: none; /* prevent selection on iPhone */
+    -webkit-user-select: none;
+    background-color: #fff;
 }
 
 /* Tiled background */
@@ -31,8 +34,7 @@ body::before {
 /* ENVELOPE */
 .envelope {
     width: 100%;
-    max-width: 520px;
-    aspect-ratio: 520 / 320; /* responsive */
+    aspect-ratio: 520 / 320;
     background: white;
     position: relative;
     cursor: pointer;
@@ -64,7 +66,7 @@ body::before {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 10vw; /* responsive heart size */
+    font-size: 14vw;
     max-font-size: 72px;
     color: #ff4d6d;
     animation: pulse 1.4s infinite;
@@ -104,14 +106,8 @@ body::before {
 }
 
 @keyframes floatUp {
-    0% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(-200px) scale(2);
-    }
+    0% { opacity: 1; transform: translateY(0) scale(1); }
+    100% { opacity: 0; transform: translateY(-200px) scale(2); }
 }
 
 /* CONTENT */
@@ -130,28 +126,18 @@ body::before {
 /* MESSAGE */
 .typing {
     margin-top: 20px;
-    font-size: clamp(24px, 8vw, 50px); /* responsive font size */
+    font-size: 8vw;
+    max-font-size: 50px;
     font-family: "Lucida Handwriting";
     color: hotpink;
     text-transform: uppercase;
     line-height: 1.1;
-    -webkit-text-stroke: 2px black;
+    -webkit-text-stroke: 3px black;
     paint-order: stroke fill;
-    text-align: center; /* center text */
-    white-space: normal; /* allow wrapping */
-    word-break: break-word; /* prevent overflow */
-    padding: 0 10px; /* small side padding for mobile */
 }
 
-
-/* MEDIA QUERIES FOR SMALL SCREENS */
-@media (max-width: 400px) {
-    .envelope-heart {
-        font-size: 14vw;
-    }
-    .open-text, .typing {
-        font-size: 10vw;
-        -webkit-text-stroke: 2px black;
-    }
+/* MEDIA QUERIES */
+@media (max-width: 430px) {
+    .envelope-heart { font-size: 20vw; }
+    .open-text, .typing { font-size: 10vw; -webkit-text-stroke: 2px black; }
 }
-
