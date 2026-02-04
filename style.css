@@ -1,0 +1,36 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: #ffe6e6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    color: #ff1a75;
+}
+
+#heart {
+    width: 150px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+#heart:hover {
+    transform: scale(1.2);
+}
+
+.hidden {
+    display: none;
+}
+
+#message h2 {
+    color: #ff3385;
+    margin-top: 20px;
+}
