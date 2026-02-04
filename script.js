@@ -27,9 +27,10 @@ function createHeart() {
 }
 
 function typeText(text) {
-    let i = 0;
-    const speed = 50; // faster typing for mobile
     const typingDiv = document.getElementById("typing");
+    typingDiv.innerHTML = "";
+    let i = 0;
+    const speed = 50;
 
     function typing() {
         if (i < text.length) {
@@ -40,3 +41,12 @@ function typeText(text) {
     }
     typing();
 }
+
+// Example: split message if too long
+const message = "HAPPY VALENTINE'S DAY, MAMI! I LOVE YOU!";
+const maxCharsPerLine = 25;
+const formattedMessage = message.match(new RegExp('.{1,' + maxCharsPerLine + '}', 'g')).join('\n');
+typeText(formattedMessage);
+
+}
+
