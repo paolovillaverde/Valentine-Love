@@ -7,6 +7,7 @@ body {
     font-family: Arial, sans-serif;
     overflow: hidden;
     position: relative;
+    -webkit-user-select: none; /* prevent selection on iPhone */
 }
 
 /* Tiled background */
@@ -16,19 +17,22 @@ body::before {
     inset: 0;
     background-image: url("https://media1.tenor.com/m/o9c6lRvOpMkAAAAd/dazai-dazai-osamu.gif");
     background-repeat: repeat;
-    background-size: 20% 33.333%;
+    background-size: 25% auto;
     opacity: 0.75;
     z-index: -1;
 }
 
 .container {
     text-align: center;
+    width: 90%;
+    max-width: 520px;
 }
 
 /* ENVELOPE */
 .envelope {
-    width: 520px;
-    height: 320px;
+    width: 100%;
+    max-width: 520px;
+    aspect-ratio: 520 / 320; /* responsive */
     background: white;
     position: relative;
     cursor: pointer;
@@ -43,9 +47,9 @@ body::before {
     left: 0;
     width: 0;
     height: 0;
-    border-left: 260px solid transparent;
-    border-right: 260px solid transparent;
-    border-top: 180px solid #eee;
+    border-left: 50% solid transparent;
+    border-right: 50% solid transparent;
+    border-top: 55% solid #eee;
     transform-origin: top;
     transition: transform 1.2s ease;
 }
@@ -60,7 +64,8 @@ body::before {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 72px;
+    font-size: 10vw; /* responsive heart size */
+    max-font-size: 72px;
     color: #ff4d6d;
     animation: pulse 1.4s infinite;
     pointer-events: none;
@@ -80,12 +85,13 @@ body::before {
 .open-text {
     margin-top: 20px;
     font-weight: bold;
-    font-size: 50px;
+    font-size: 8vw;
+    max-font-size: 50px;
     font-family: "Lucida Handwriting";
     color: hotpink;
     text-transform: uppercase;
     line-height: 1.1;
-    -webkit-text-stroke: 5px black;
+    -webkit-text-stroke: 3px black;
     paint-order: stroke fill;
 }
 
@@ -104,17 +110,18 @@ body::before {
     }
     100% {
         opacity: 0;
-        transform: translateY(-240px) scale(2);
+        transform: translateY(-200px) scale(2);
     }
 }
 
 /* CONTENT */
 .content {
     display: none;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .content img {
+    width: 90%;
     max-width: 480px;
     border-radius: 14px;
     box-shadow: 0 12px 30px rgba(0,0,0,0.35);
@@ -122,12 +129,24 @@ body::before {
 
 /* MESSAGE */
 .typing {
-    margin-top: 30px;
-    font-size: 50px;
+    margin-top: 20px;
+    font-size: 8vw;
+    max-font-size: 50px;
     font-family: "Lucida Handwriting";
     color: hotpink;
     text-transform: uppercase;
     line-height: 1.1;
-    -webkit-text-stroke: 5px black;
+    -webkit-text-stroke: 3px black;
     paint-order: stroke fill;
+}
+
+/* MEDIA QUERIES FOR SMALL SCREENS */
+@media (max-width: 400px) {
+    .envelope-heart {
+        font-size: 14vw;
+    }
+    .open-text, .typing {
+        font-size: 10vw;
+        -webkit-text-stroke: 2px black;
+    }
 }
