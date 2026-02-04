@@ -1,0 +1,133 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Tiled background */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("https://media1.tenor.com/m/o9c6lRvOpMkAAAAd/dazai-dazai-osamu.gif");
+    background-repeat: repeat;
+    background-size: 20% 33.333%;
+    opacity: 0.75;
+    z-index: -1;
+}
+
+.container {
+    text-align: center;
+}
+
+/* ENVELOPE */
+.envelope {
+    width: 520px;
+    height: 320px;
+    background: white;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+    overflow: hidden;
+    transform-style: preserve-3d;
+}
+
+.flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 260px solid transparent;
+    border-right: 260px solid transparent;
+    border-top: 180px solid #eee;
+    transform-origin: top;
+    transition: transform 1.2s ease;
+}
+
+.envelope.open .flap {
+    transform: rotateX(180deg);
+}
+
+/* HEART ON ENVELOPE */
+.envelope-heart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 72px;
+    color: #ff4d6d;
+    animation: pulse 1.4s infinite;
+    pointer-events: none;
+}
+
+.envelope.open .envelope-heart {
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+@keyframes pulse {
+    0% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.2); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+.open-text {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 50px;
+    font-family: "Lucida Handwriting";
+    color: hotpink;
+    text-transform: uppercase;
+    line-height: 1.1;
+    -webkit-text-stroke: 5px black;
+    paint-order: stroke fill;
+}
+
+/* HEART CONFETTI */
+.heart {
+    position: absolute;
+    color: pink;
+    animation: floatUp 3s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes floatUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-240px) scale(2);
+    }
+}
+
+/* CONTENT */
+.content {
+    display: none;
+    margin-top: 30px;
+}
+
+.content img {
+    max-width: 480px;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+}
+
+/* MESSAGE */
+.typing {
+    margin-top: 30px;
+    font-size: 50px;
+    font-family: "Lucida Handwriting";
+    color: hotpink;
+    text-transform: uppercase;
+    line-height: 1.1;
+    -webkit-text-stroke: 5px black;
+    paint-order: stroke fill;
+}
