@@ -12,7 +12,7 @@ function openEnvelope() {
         envelope.style.display = 'none';
         document.querySelector('.open-text').style.display = 'none';
         document.querySelector('.content').style.display = 'block';
-        typeText("HAPPY VALENTINE'S DAY, MAMI! I LOVE YOU!");
+        typeText("HAPPY 4th ANNIVERSARY, MAMI! I LOVE YOUU <3!");
     }, 1300);
 }
 
@@ -43,3 +43,4 @@ function typeText(text) {
     }
     typing();
 }
+
